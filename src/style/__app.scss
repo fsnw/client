@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base
+{
+  html
+  {
+    @apply
+    text-gray-400
+    bg-black
+    text-sm
+  }
+  img
+  {
+    @apply
+    block
+    w-full
+    object-cover
+    object-center
+  }
+}
+
+@mixin limitNumberOfTextLine($numberOfTextLine)
+{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $numberOfTextLine;
+  line-clamp: $numberOfTextLine;
+  -webkit-box-orient: vertical;
+}
+
+
+.post-content
+{
+  @include limitNumberOfTextLine(3)
+}
