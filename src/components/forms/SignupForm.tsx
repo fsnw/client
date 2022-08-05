@@ -39,7 +39,7 @@ export default function SignupForm()
         </label>
         <label htmlFor="" className={"flex w-full flex-col gap-3"}>
             <span>password</span>
-            <input type="text" onChange={(event) => setPassword(event.target.value)} className={"w-auto h-[35px] rounded-3xl"}/>
+            <input type="password" onChange={(event) => setPassword(event.target.value)} className={"w-auto h-[35px] rounded-3xl"}/>
         </label>
 
 

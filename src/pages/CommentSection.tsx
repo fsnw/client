@@ -22,7 +22,6 @@ export default function CommentSection()
         content: ""
     });
     
-
     useEffect(() => {
         axios.get(`https://localhost:7255/api/Posts/${postId}`)
             .then(res => {
@@ -30,12 +29,25 @@ export default function CommentSection()
             });
     }, []);
 
+// get comment khi pointer đến trang
 
-    useEffect(() => {
+    function initComment()
+    {
         axios.get(`https://localhost:7255/api/Comments`)
             .then(res => {                
-                setCommentList(res.data.filter((comment: any) => comment.postId == postId)); 
+                const data: any = res.data.filter((comment: any) => comment.postId == postId);
+                data.sort((a: any, b: any) => {
+                    return b.id - a.id;
+                });
+
+                console.log(data)
+                setCommentList(data); 
             });
+    }
+
+
+    useEffect(() => {
+        initComment()
     }, []);
 
 
@@ -46,13 +58,10 @@ export default function CommentSection()
             interactiveUser: JSON.parse(UserSession.get()!),
             content: newComment
         }
-
+//post comment
         axios.post(`https://localhost:7255/api/Comments`, dataComment)
             .then(res => {
-                axios.get(`https://localhost:7255/api/Comments`)
-                .then(res => {                
-                    setCommentList(res.data.filter((comment: any) => comment.postId == postId)); 
-                });
+                initComment()
 
                 const dataNot = {
                     postId: postId,
@@ -60,7 +69,7 @@ export default function CommentSection()
                     message: `has commented "${newComment}" on your post`,
                     isRead: false
                 }
-
+//post notification
                 axios.post('https://localhost:7255/api/Notifications', dataNot)
                 .then(res => { 
                     console.log(res);
@@ -77,9 +86,10 @@ export default function CommentSection()
                 <button onClick={sendComment} >Send</button>
             </label>
         </div>
-        <div>
+        <div className="post-content">
             <span className={"font-black text-white"}>{post.userId}: </span>
             {post.content}
+            <img className="pt-12" src={post.image} alt="" />
         </div>
         <CommentContainer commentList={commentList}/>
     </div>;

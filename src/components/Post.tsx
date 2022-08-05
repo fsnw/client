@@ -15,10 +15,14 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Post(props: any)
 {
     const [love, setLove] = useState(props.loveState);
+    const [loveAmount, setLoveAmount] = useState(props.loveAmount);
 
     const onUnLove = () =>
     {
         setLove(!love);
+
+        setLoveAmount(loveAmount-1);
+
         axios.delete(`https://localhost:7255/api/PostLofes/${props.loveId}`)
             .then((res: any) => {
                 console.log(res.data);
@@ -28,6 +32,8 @@ export default function Post(props: any)
     const onLove = () =>
     {        
         setLove(!love);
+
+        setLoveAmount(loveAmount+1);
 
         const data = {
             postId: props.postId,
@@ -83,7 +89,7 @@ export default function Post(props: any)
                 </div>
             </div>
             <div className={""}>
-                1,032,324 likes
+                {loveAmount} loves
             </div>
             <div className={"post-content"}>
                 <span className={"font-black text-white"}>{props.userId}: </span>

@@ -26,6 +26,11 @@ export default function NotificationContainer()
                                 }
                             });
                         });
+
+                        data.sort((a: any, b: any) => {
+                            return b.id - a.id;
+                        });
+                
                         setNotificationList(data);
                     });
             });

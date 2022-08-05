@@ -42,7 +42,7 @@ export default function LoginForm()
         </label>
         <label htmlFor="" className={"flex w-full flex-col gap-3"}>
             <span>password</span>
-            <input name= "password" type="text" onChange={(event)=>setPassword(event.target.value)} className={"w-auto h-[35px] rounded-3xl"}/>
+            <input name= "password" type="password" onChange={(event)=>setPassword(event.target.value)} className={"w-auto h-[35px] rounded-3xl"}/>
         </label>
 
         <div className={"text-[10px] text-white"}>forgot your pass?</div>
