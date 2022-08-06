@@ -71,9 +71,6 @@ const Upload = () => {
         <h5 className="heading">Create a new post</h5>
       </div>
       <hr/>
-      <button className="closeBtn" >
-        <RiCloseLine style={{ marginBottom: "-3px" }} />
-      </button>
       {!imageUpload ? (
         <div>
       <div className="modalContent">

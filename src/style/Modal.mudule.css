@@ -170,7 +170,8 @@
   }
   .create-post img{
      position: absolute;
-     left: 35%;
+     left: 50%;
+     transform: translateX(-50%)
   }
 .input-content{
     width: 100%;

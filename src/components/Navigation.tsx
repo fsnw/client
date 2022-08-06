@@ -13,9 +13,9 @@ import {Link} from "react-router-dom";
 export default function Navigation(props: any)
 {
     return <div className={"flex justify-around text-3xl fixed bottom-0 w-full py-3 border-0 border-t border-t-white bg-black"}>
-        <Link to="/"><RiHomeLine/></Link>
-        <Link to="/upload"><BsCloudUpload/></Link>
-        <Link to="/notification"><TbNotification/></Link>
-        <Link to="/hihi"><AiOutlineUser/></Link>
+        <a href="/"><RiHomeLine/></a>
+        <a href="/upload"><BsCloudUpload/></a>
+        <a href="/notification"><TbNotification/></a>
+        <a href="/hihi"><AiOutlineUser/></a>
     </div>;
 }

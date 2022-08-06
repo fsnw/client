@@ -19,6 +19,10 @@
     object-cover
     object-center
   }
+  input{
+    @apply
+    px-[20px]
+  }
 }
 
 @mixin limitNumberOfTextLine($numberOfTextLine)
